@@ -1,6 +1,10 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const Product = require('./models/productModel')
 const app = express()
+
+
+app.use(express.json())
 
 //router
 app.get('/', (req, res) => {
@@ -11,7 +15,16 @@ app.get('/', (req,res) => {
     res.send('Hello Blog, my name is swap')
 }) 
 
-
+app.post('/products', async(req, res) => {
+    try {
+        const products = await Product.create(req.body)
+        res.status(200).json(products);
+        
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({message: error.message})
+    }
+})
 
 mongoose.set("strictQuery", false)
 mongoose.
