@@ -14,6 +14,18 @@ Here are the main endpoints supported by the API:
 `PUT /api/resource/:id`: Update an existing resource by ID.
 `DELETE /api/resource/:id`: Delete a resource by ID.
 
+### Setup this project
+After you download or clone this project, you need run this command to install Node packages
+
+```sh
+npm install
+```
+To start the application run the below command
+
+```sh
+npm run swap
+```
+
 ## 🚀 Technologies Used
 
 Node.js: JavaScript runtime
