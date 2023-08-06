@@ -3,14 +3,21 @@ const express = require('express')
 const mongoose = require('mongoose')
 const productRoute = require("./routes/productRoute");
 const errorMiddleware = require("./middleware/errorMiddleware")
+const cors = require('cors')
 
 const app = express()
 
 const PORT = process.env.PORT || 3000
 const MONGO_URL = process.env.MONGO_URL
 
+/*var corsOptions = {
+    origin: 'http://example.com',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}*/
+
+app.use(cors)
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: false }))
 
 //router
 
@@ -25,6 +32,7 @@ app.get('/', (req,res) => {
 }) 
 
 app.use(errorMiddleware);
+
 
 
 mongoose.set("strictQuery", false)
